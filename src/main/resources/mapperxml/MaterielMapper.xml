@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fabricate.produce.mapper.MaterielMapper">
+  <resultMap id="BaseResultMap" type="com.fabricate.produce.entity.Materiel">
+    <!--@mbg.generated-->
+    <id column="materiel_id" jdbcType="INTEGER" property="materielId" />
+    <result column="materiel_name" jdbcType="VARCHAR" property="materielName" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="classification" jdbcType="VARCHAR" property="classification" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="m_update_time" jdbcType="TIMESTAMP" property="mUpdateTime" />
+    <result column="uconsumptio" jdbcType="VARCHAR" property="uconsumptio" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    materiel_id, materiel_name, unit, classification, `source`, m_update_time, uconsumptio
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from materiel
+    where materiel_id = #{materielId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from materiel
+    where materiel_id = #{materielId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fabricate.produce.entity.Materiel">
+    <!--@mbg.generated-->
+    insert into materiel (materiel_id, materiel_name, unit, 
+      classification, `source`, m_update_time, 
+      uconsumptio)
+    values (#{materielId,jdbcType=INTEGER}, #{materielName,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, 
+      #{classification,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{mUpdateTime,jdbcType=TIMESTAMP}, 
+      #{uconsumptio,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fabricate.produce.entity.Materiel">
+    <!--@mbg.generated-->
+    insert into materiel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="materielId != null">
+        materiel_id,
+      </if>
+      <if test="materielName != null">
+        materiel_name,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="classification != null">
+        classification,
+      </if>
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="mUpdateTime != null">
+        m_update_time,
+      </if>
+      <if test="uconsumptio != null">
+        uconsumptio,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="materielId != null">
+        #{materielId,jdbcType=INTEGER},
+      </if>
+      <if test="materielName != null">
+        #{materielName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="classification != null">
+        #{classification,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="mUpdateTime != null">
+        #{mUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uconsumptio != null">
+        #{uconsumptio,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fabricate.produce.entity.Materiel">
+    <!--@mbg.generated-->
+    update materiel
+    <set>
+      <if test="materielName != null">
+        materiel_name = #{materielName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="classification != null">
+        classification = #{classification,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="mUpdateTime != null">
+        m_update_time = #{mUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uconsumptio != null">
+        uconsumptio = #{uconsumptio,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where materiel_id = #{materielId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fabricate.produce.entity.Materiel">
+    <!--@mbg.generated-->
+    update materiel
+    set materiel_name = #{materielName,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      classification = #{classification,jdbcType=VARCHAR},
+      `source` = #{source,jdbcType=VARCHAR},
+      m_update_time = #{mUpdateTime,jdbcType=TIMESTAMP},
+      uconsumptio = #{uconsumptio,jdbcType=VARCHAR}
+    where materiel_id = #{materielId,jdbcType=INTEGER}
+  </update>
+</mapper>

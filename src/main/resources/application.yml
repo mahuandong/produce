@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: dev
+mybatis:
+  typeAliasesPackage: com.fabricate.produce.entity
+  mapperLocations: classpath:mapperxml/*.xml
+---
+
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/manufacturing?characterEncoding=utf8&serverTimezone=GMT%2b8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    showSql: true
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  returnPageInfo: check
+
+logging:
+  level:
+    com.fabricate.produce.mapper: debug

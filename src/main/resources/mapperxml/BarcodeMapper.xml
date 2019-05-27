@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fabricate.produce.mapper.BarcodeMapper">
+  <resultMap id="BaseResultMap" type="com.fabricate.produce.entity.Barcode">
+    <!--@mbg.generated-->
+    <id column="barcode_id" jdbcType="VARCHAR" property="barcodeId" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="orders_id" jdbcType="INTEGER" property="ordersId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    barcode_id, quantity, orders_id, `status`, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from barcode
+    where barcode_id = #{barcodeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from barcode
+    where barcode_id = #{barcodeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fabricate.produce.entity.Barcode">
+    <!--@mbg.generated-->
+    insert into barcode (barcode_id, quantity, orders_id, 
+      `status`, user_id)
+    values (#{barcodeId,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, #{ordersId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fabricate.produce.entity.Barcode">
+    <!--@mbg.generated-->
+    insert into barcode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="barcodeId != null">
+        barcode_id,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="ordersId != null">
+        orders_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="barcodeId != null">
+        #{barcodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="ordersId != null">
+        #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fabricate.produce.entity.Barcode">
+    <!--@mbg.generated-->
+    update barcode
+    <set>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="ordersId != null">
+        orders_id = #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where barcode_id = #{barcodeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fabricate.produce.entity.Barcode">
+    <!--@mbg.generated-->
+    update barcode
+    set quantity = #{quantity,jdbcType=INTEGER},
+      orders_id = #{ordersId,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where barcode_id = #{barcodeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fabricate.produce.mapper.ExamineMapper">
+  <resultMap id="BaseResultMap" type="com.fabricate.produce.entity.Examine">
+    <!--@mbg.generated-->
+    <id column="examine_id" jdbcType="INTEGER" property="examineId" />
+    <result column="barcode_id" jdbcType="VARCHAR" property="barcodeId" />
+    <result column="collection_result" jdbcType="INTEGER" property="collectionResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    examine_id, barcode_id, collection_result
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from examine
+    where examine_id = #{examineId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from examine
+    where examine_id = #{examineId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fabricate.produce.entity.Examine">
+    <!--@mbg.generated-->
+    insert into examine (examine_id, barcode_id, collection_result
+      )
+    values (#{examineId,jdbcType=INTEGER}, #{barcodeId,jdbcType=VARCHAR}, #{collectionResult,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fabricate.produce.entity.Examine">
+    <!--@mbg.generated-->
+    insert into examine
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="examineId != null">
+        examine_id,
+      </if>
+      <if test="barcodeId != null">
+        barcode_id,
+      </if>
+      <if test="collectionResult != null">
+        collection_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="examineId != null">
+        #{examineId,jdbcType=INTEGER},
+      </if>
+      <if test="barcodeId != null">
+        #{barcodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionResult != null">
+        #{collectionResult,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fabricate.produce.entity.Examine">
+    <!--@mbg.generated-->
+    update examine
+    <set>
+      <if test="barcodeId != null">
+        barcode_id = #{barcodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionResult != null">
+        collection_result = #{collectionResult,jdbcType=INTEGER},
+      </if>
+    </set>
+    where examine_id = #{examineId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fabricate.produce.entity.Examine">
+    <!--@mbg.generated-->
+    update examine
+    set barcode_id = #{barcodeId,jdbcType=VARCHAR},
+      collection_result = #{collectionResult,jdbcType=INTEGER}
+    where examine_id = #{examineId,jdbcType=INTEGER}
+  </update>
+</mapper>

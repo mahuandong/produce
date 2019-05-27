@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fabricate.produce.mapper.DeliveryMapper">
+  <resultMap id="BaseResultMap" type="com.fabricate.produce.entity.Delivery">
+    <!--@mbg.generated-->
+    <id column="delivery_id" jdbcType="INTEGER" property="deliveryId" />
+    <result column="materile_id" jdbcType="INTEGER" property="materileId" />
+    <result column="orders_id" jdbcType="INTEGER" property="ordersId" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="d_quantity" jdbcType="INTEGER" property="dQuantity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    delivery_id, materile_id, orders_id, unit, d_quantity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from delivery
+    where delivery_id = #{deliveryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from delivery
+    where delivery_id = #{deliveryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fabricate.produce.entity.Delivery">
+    <!--@mbg.generated-->
+    insert into delivery (delivery_id, materile_id, orders_id, 
+      unit, d_quantity)
+    values (#{deliveryId,jdbcType=INTEGER}, #{materileId,jdbcType=INTEGER}, #{ordersId,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR}, #{dQuantity,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fabricate.produce.entity.Delivery">
+    <!--@mbg.generated-->
+    insert into delivery
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deliveryId != null">
+        delivery_id,
+      </if>
+      <if test="materileId != null">
+        materile_id,
+      </if>
+      <if test="ordersId != null">
+        orders_id,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="dQuantity != null">
+        d_quantity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deliveryId != null">
+        #{deliveryId,jdbcType=INTEGER},
+      </if>
+      <if test="materileId != null">
+        #{materileId,jdbcType=INTEGER},
+      </if>
+      <if test="ordersId != null">
+        #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="dQuantity != null">
+        #{dQuantity,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fabricate.produce.entity.Delivery">
+    <!--@mbg.generated-->
+    update delivery
+    <set>
+      <if test="materileId != null">
+        materile_id = #{materileId,jdbcType=INTEGER},
+      </if>
+      <if test="ordersId != null">
+        orders_id = #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="dQuantity != null">
+        d_quantity = #{dQuantity,jdbcType=INTEGER},
+      </if>
+    </set>
+    where delivery_id = #{deliveryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fabricate.produce.entity.Delivery">
+    <!--@mbg.generated-->
+    update delivery
+    set materile_id = #{materileId,jdbcType=INTEGER},
+      orders_id = #{ordersId,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      d_quantity = #{dQuantity,jdbcType=INTEGER}
+    where delivery_id = #{deliveryId,jdbcType=INTEGER}
+  </update>
+</mapper>
